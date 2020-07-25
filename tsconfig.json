@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "es2018",
+    "strict": true,
+    "skipLibCheck": true,
+    "module": "esnext",
+    "rootDir": "./src",
+    "outDir": "./dist/",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "newLine": "lf",
+    "jsx": "react",
+    "lib": ["es2020.string", "esnext", "dom", "dom.iterable"],
+    "paths": {
+      "~/*": ["src/*"],
+      "~comp/*": ["src/components/*"],
+      "~lib/*": ["src/lib/*"],
+      "*": ["node_modules/@types/*", "types/*"]
+    },
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ],
+    "experimentalDecorators": true
+  },
+  "include": ["src"],
+  "exclude": ["tests"]
+}
