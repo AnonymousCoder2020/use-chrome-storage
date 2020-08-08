@@ -28,6 +28,6 @@
     ],
     "experimentalDecorators": true
   },
-  "include": ["src"],
-  "exclude": ["tests"]
+  "include": ["src", "types/*"],
+  "exclude": ["tests", "src/**/*.test.ts"]
 }
