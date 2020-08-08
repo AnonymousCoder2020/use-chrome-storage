@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && git add .",
     "set-url": "git remote set-url origin",
     "check-url": "git remote -v",
-    "publish": "git push origin master",
+    "push": "git push origin master",
     "pull": "git pull origin master"
   },
   "repository": {
