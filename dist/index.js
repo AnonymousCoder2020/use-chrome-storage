@@ -4,6 +4,7 @@ import 'chrome-extension-async';
 import useAsyncEffect from 'use-async-effect';
 import ObjectPath from 'objectpath';
 const { storage } = chrome;
+const err = () => (console.warn('The function of the unavailable stage is used.'), console.trace());
 const useChromeStorage = (storageType, useOpt) => {
     // stateListの準備が完了したら
     const [isLoadingCompleted, setIsLoadingCompleted] = useState(false);
@@ -12,7 +13,7 @@ const useChromeStorage = (storageType, useOpt) => {
         return mapValues(useOpt, optValue => ObjectPath.parse(optValue.path));
     }, [useOpt]);
     // ストレージ読込前に提供する state
-    const [stateList, setStateList] = useState(mapValues(useOpt, optValue => [optValue.initialValue, async () => { }, { addListener: null, removeListener: null, awaitListener: null }]));
+    const [stateList, setStateList] = useState(mapValues(useOpt, optValue => [optValue.initialValue, async () => err(), { addListener: err, removeListener: err, awaitListener: async () => err() }]));
     // Listener置き場
     const listenerList = useRef({});
     const addListener = useCallback((stateName, listener) => {

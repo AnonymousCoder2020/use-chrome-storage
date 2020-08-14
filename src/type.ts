@@ -1,4 +1,4 @@
-type StorageType = "local" | "sync"
+type StorageType = 'local' | 'sync'
 
 type UseOpt<T> = {
   [P in keyof T]: {
@@ -31,9 +31,9 @@ type StateItem<V> = [
   V,
   (value: V, setterOpt?: SetterOpt) => Promise<void>,
   {
-    addListener: ((listener: Listener<V>) => void) | null
-    removeListener: ((listener: Listener<V>) => void) | null
-    awaitListener: (() => Promise<void>) | null
+    addListener: (listener: Listener<V>) => void
+    removeListener: (listener: Listener<V>) => void
+    awaitListener: () => Promise<void>
   }
 ]
 

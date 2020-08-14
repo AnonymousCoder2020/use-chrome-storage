@@ -19,6 +19,8 @@ import {
 
 const { storage } = chrome
 
+const err = () => (console.warn('The function of the unavailable stage is used.'), console.trace())
+
 const useChromeStorage = <T>(storageType: StorageType, useOpt: UseOpt<T>) => {
   // stateListの準備が完了したら
   const [isLoadingCompleted, setIsLoadingCompleted] = useState(false)
@@ -30,7 +32,8 @@ const useChromeStorage = <T>(storageType: StorageType, useOpt: UseOpt<T>) => {
   const [stateList, setStateList] = useState<MappedStateList<T>>(
     mapValues(
       useOpt,
-      optValue => [optValue.initialValue, async () => {}, { addListener: null, removeListener: null, awaitListener: null }] as StateItem<T[any]>
+      optValue =>
+        [optValue.initialValue, async () => err(), { addListener: err, removeListener: err, awaitListener: async () => err() }] as StateItem<T[any]>
     )
   )
 
