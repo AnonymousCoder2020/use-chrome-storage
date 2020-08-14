@@ -109,7 +109,6 @@ const useChromeStorage = (storageType, useOpt) => {
                 // chrome.storageにも反映
                 storage[storageType].get(data => {
                     const process = set(data, useOptPathList[stateName], newValue);
-                    console.log('process', process);
                     storage[storageType].set(process, resolve);
                 });
             }
