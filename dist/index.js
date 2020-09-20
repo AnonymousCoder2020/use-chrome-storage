@@ -6,6 +6,7 @@ const { storage } = chrome;
 const useChromeStorage = (storageType, useOpt) => {
     // stateListの準備が完了したら
     const isLoadedRef = useRef(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     // 指定されたuseOptの各文字列pathを分解して内部的に使うために置いておく
     const pathListRef = useRef(mapValues(useOpt, optValue => toPath(optValue.path)));
     // state or chrome storage の状態を変更する
@@ -86,6 +87,7 @@ const useChromeStorage = (storageType, useOpt) => {
         }
         setStateList({ ...stateList });
         isLoadedRef.current = true;
+        setIsLoaded(true);
         // chrome.storageにデフォルトの状態を保存
         const chromeAsyncSetter = (data) => new Promise(resolve => {
             storage[storageType].set(data, resolve);
@@ -127,7 +129,7 @@ const useChromeStorage = (storageType, useOpt) => {
     return [
         stateList,
         {
-            isLoadedRef,
+            isLoaded,
             promiseSetterMulti,
             pathListRef,
         },

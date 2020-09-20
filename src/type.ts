@@ -52,9 +52,9 @@ type PathList<T> = { [P in keyof UseOpt<T>]: string[] }
 type UseChromeStorageReturnType<T> = [
   MappedStateList<T>,
   {
-    isLoadedRef: MutableRefObject<boolean>
     promiseSetterMulti: (updateProcedures: UpdateProcedures<T>) => Promise<void>
     pathListRef: MutableRefObject<PathList<T>>
+    isLoaded: boolean
   }
 ]
 
