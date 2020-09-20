@@ -1,5 +1,5 @@
 import 'chrome-extension-async';
-import { StorageType, UseOpt, UseChromeStorageReturnType } from './type';
+import { StorageType, UseChromeStorageReturnType, UseOpt } from './type';
 declare const useChromeStorage: <T>(storageType: StorageType, useOpt: UseOpt<T>) => UseChromeStorageReturnType<T>;
-export { useChromeStorage as default };
 export * from './type';
+export { useChromeStorage as default };

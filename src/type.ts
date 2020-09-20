@@ -1,3 +1,5 @@
+import { MutableRefObject } from 'react'
+
 type StorageType = 'local' | 'sync'
 
 type UseOpt<T> = {
@@ -45,14 +47,14 @@ type UpdateProcedures<T> = {
   [P in keyof T]: T
 }
 
-type UseOptPathList<T> = { [P in keyof UseOpt<T>]: string[] }
+type PathList<T> = { [P in keyof UseOpt<T>]: string[] }
 
 type UseChromeStorageReturnType<T> = [
   MappedStateList<T>,
   {
-    isLoadingCompleted: boolean
+    isLoadedRef: MutableRefObject<boolean>
     promiseSetterMulti: (updateProcedures: UpdateProcedures<T>) => Promise<void>
-    useOptPathList: UseOptPathList<T>
+    pathListRef: MutableRefObject<PathList<T>>
   }
 ]
 
@@ -67,6 +69,6 @@ export {
   StateItem,
   MappedStateList,
   UpdateProcedures,
-  UseOptPathList,
+  PathList,
   UseChromeStorageReturnType,
 }
