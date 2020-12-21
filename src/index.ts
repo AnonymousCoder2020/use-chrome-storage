@@ -1,5 +1,5 @@
 import 'chrome-extension-async'
-import { get, mapValues, set, toPath } from 'lodash'
+import { get, mapValues, set, toPath } from 'lodash-es'
 import { useCallback, useRef, useState } from 'react'
 import useAsyncEffect from 'use-async-effect'
 import {
@@ -111,7 +111,7 @@ const useChromeStorage = <T>(storageType: StorageType, useOpt: UseOpt<T>) => {
     // chrome.storageにデフォルトの状態を保存
     const chromeAsyncSetter = (data: any) =>
       new Promise(resolve => {
-        storage[storageType].set(data, resolve)
+        storage[storageType].set(data, resolve as () => void)
       })
     await chromeAsyncSetter(allData)
 

@@ -1,5 +1,5 @@
 import 'chrome-extension-async';
-import { get, mapValues, set, toPath } from 'lodash';
+import { get, mapValues, set, toPath } from 'lodash-es';
 import { useCallback, useRef, useState } from 'react';
 import useAsyncEffect from 'use-async-effect';
 const { storage } = chrome;
