@@ -13,12 +13,12 @@ const sendMessage = (message: any) =>
 const storage = {
   set(type: StorageType, data: any) {
     return new Promise(resolve => {
-      chrome.storage[type].set(data, resolve)
+      chrome.storage[type].set(data, resolve as any)
     })
   },
   remove(type: StorageType, removeKey: string | string[]) {
     return new Promise(resolve => {
-      chrome.storage[type].remove(removeKey, resolve)
+      chrome.storage[type].remove(removeKey, resolve as any)
     })
   },
 }

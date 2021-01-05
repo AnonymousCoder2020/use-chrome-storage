@@ -21,11 +21,15 @@ declare type ResolveList<T> = {
 interface SetterOpt {
     stateOnly?: boolean;
 }
-declare type StateItem<V> = [V, (value: V, setterOpt?: SetterOpt) => Promise<void>, {
-    addListener: (listener: Listener<V>) => void;
-    removeListener: (listener: Listener<V>) => void;
-    awaitListener: () => Promise<void>;
-}];
+declare type StateItem<V> = [
+    V,
+    (value: V, setterOpt?: SetterOpt) => Promise<void>,
+    {
+        addListener: (listener: Listener<V>) => void;
+        removeListener: (listener: Listener<V>) => void;
+        awaitListener: () => Promise<void>;
+    }
+];
 declare type MappedStateList<T> = {
     [P in keyof T]: StateItem<T[P]>;
 };
@@ -35,9 +39,12 @@ declare type UpdateProcedures<T> = {
 declare type PathList<T> = {
     [P in keyof UseOpt<T>]: string[];
 };
-declare type UseChromeStorageReturnType<T> = [MappedStateList<T>, {
-    promiseSetterMulti: (updateProcedures: UpdateProcedures<T>) => Promise<void>;
-    pathListRef: MutableRefObject<PathList<T>>;
-    isLoaded: boolean;
-}];
+declare type UseChromeStorageReturnType<T> = [
+    MappedStateList<T>,
+    {
+        promiseSetterMulti: (updateProcedures: UpdateProcedures<T>) => Promise<void>;
+        pathListRef: MutableRefObject<PathList<T>>;
+        isLoaded: boolean;
+    }
+];
 export { StorageType, UseOpt, StorageChangeInfo, Listener, ListenerList, ResolveList, SetterOpt, StateItem, MappedStateList, UpdateProcedures, PathList, UseChromeStorageReturnType, };
